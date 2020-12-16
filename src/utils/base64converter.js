@@ -1,6 +1,6 @@
 import RNFetchBlob from 'react-native-fetch-blob';
 
-class MyExampleClass extends Component {
+function base64converter(exampleFilePath){
 
   convertFile = (exampleFilePath) => {
       const fs = RNFetchBlob.fs;
@@ -12,3 +12,4 @@ class MyExampleClass extends Component {
     }
 
 }
+export default base64converter;

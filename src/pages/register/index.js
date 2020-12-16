@@ -3,9 +3,9 @@ import { View, KeyboardAvoidingView, Image, StyleSheet, TextInput, TouchableOpac
 import logo from "../../images/logo.png";
 import Storage from '../../utils/storage';
 import api from '../../services/api';
-//import {GoToButton} from '../../utils/GoToButton'
+import {GoToButton} from '../../utils/GoToButton'
 import Dateform from '../../utils/dateform'
-
+import Selectimages from '../../utils/selectImages'
 function Register({ navigation }) {
 
     const [mail, setMail] = useState('');
@@ -40,7 +40,6 @@ function Register({ navigation }) {
                 } else {
                     //chama login
 
-                    //alert(mail)
                     await login()
                 }
             }
@@ -60,14 +59,14 @@ function Register({ navigation }) {
             }).then(function (response) {
                 // handle success
                 console.log(response);
-                if (response.data.name === null || response.data.name === undefined) {
+                if (response.data === null || response.data.name === undefined) {
                     //chama cadastro
-                    alert('Primeiro realize seu cadastro!')
+                    alert('falha ao cadastrar!')
                 } else {
                     //salva dados e chama tela principal
-                    Storage.setItem(data, response.data);
+                    //Storage.setItem(data, response.data);
                     alert(JSON.stringify(Storage.getItem(data)));
-                    navigation.navigate('Profile', { github_username: dev.github_username })
+                    navigation.navigate('Main')
                 }
 
             })
@@ -95,7 +94,7 @@ function Register({ navigation }) {
             <View style={styles.containerLogo}>
                 <Text style={styles.textLogo}>My books</Text>
                 <Image style={styles.logo} source={logo} />
-                <Text style={styles.textLogo}>My Loves</Text>
+                <Text style={styles.textLogo}>My Loves</Text> 
             </View>
 
             <View
@@ -124,25 +123,12 @@ function Register({ navigation }) {
                     placeholder="Senha"
                     autoCorrect={false}
                     onChangeText={(text) => { setPass(text) }}
-                />
-                <Dateform/>
-                <TextInput
-                    name='image'
-                    style={styles.input}
-                    placeholder="Imagem"
-                    autoCorrect={false}
-                    onChangeText={(text) => { setImage(text) }}
-                />
-
-
+                />               
+                
+                <Dateform />
+                <Selectimages />
                 <TouchableOpacity onPress={validate} style={styles.btnSubmit}>
-                    <Text style={styles.submitText}>Acessar</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity onPress={() => {
-                    navigation.navigate('Register')
-                }} style={styles.btnRegister}>
-                    <Text style={styles.registerText}>Criar conta</Text>
+                    <Text style={styles.submitText}>Registrar</Text>
                 </TouchableOpacity>
 
             </View>
@@ -158,28 +144,28 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#D2B2C5'
+        backgroundColor: '#D2B2C5',
+        height:'20%'
     },
     containerLogo: {
-        flex: 1,
-        width: '90%',
+        //flex: 1,
+        width: '100%',
+        height:'20%',       
         justifyContent: 'center',
-        marginTop: 10,
         alignItems: 'center',
     },
     logo: {
         flex: 1,
-        width: '60%',
+        height:'20%',
+        width: '25%',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 10,
+        marginTop: 5,
         resizeMode: 'contain'
-
-
-    },
+        },
     textLogo: {
         color: '#EB5E76',
-        fontSize: 51,
+        fontSize: 21,
         fontFamily: 'sans-serif-light'
     },
     container: {

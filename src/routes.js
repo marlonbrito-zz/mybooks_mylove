@@ -7,7 +7,13 @@ import Register from './pages/register';
 
 const Routes = createAppContainer(
     createStackNavigator({
-        Login: {
+        Register: {
+            screen: Register,
+            navigationOptions: {
+                title: 'Register',
+                headerShown: false,
+            }
+        },Login: {
             screen: Login,
             
             navigationOptions: {
@@ -15,13 +21,7 @@ const Routes = createAppContainer(
                 headerShown: false,
             }
         },
-        Register: {
-            screen: Register,
-            navigationOptions: {
-                title: 'Register',
-                headerShown: false,
-            }
-        },
+        
         Main: {
             screen: Main,
             navigationOptions: {
