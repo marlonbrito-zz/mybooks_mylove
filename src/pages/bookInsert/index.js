@@ -4,7 +4,7 @@ import logo from "../../images/logo.png";
 import api from '../../services/api';
 import * as DocumentPicker from 'expo-document-picker';
 import DatePicker from 'react-native-datepicker';
-function Register({ navigation }) {
+function inserBook({ navigation }) {
 
     const [mail, setMail] = useState('');
     const [pass, setPass] = useState('');
@@ -334,4 +334,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default Register;
+export default inserBook;

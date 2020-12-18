@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL:'http://localhost:3333',
+    baseURL:'https://shrouded-springs-30345.herokuapp.com',
+    headers:{'content-type': 'application/json'}
 });
 
 export default api;
